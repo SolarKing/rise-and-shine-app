@@ -1,0 +1,227 @@
+wake-calc
+  position: relative
+  width: 300px
+  height: 300px
+  display: block
+  margin: 0 auto
+  // border: black thin solid
+  +centerEverything()
+  .wake-calc-result
+    position: absolute
+    right: -100px
+    bottom: -30px
+    width: 200px
+    height: 60px
+    text-align: center
+    color: #333
+    letter-spacing: 2px
+    font-family: "Permanent Marker", sans-serif
+    font-size: 24px
+    display: none
+    &.show
+      animation: show-wake-results .5s ease forwards
+    .wakeat
+      font-size: 14px
+      letter-spacing: 2px
+    .result
+      font-size: 30px
+
+
+  .wake-calc-btn
+    width: 70px
+    height: 70px
+    border-radius: 45px
+    background: white
+    border: none
+    font-size: 40px
+    color: #434343
+    +applyShadow()
+    position: relative
+    z-index: 900
+    animation: show-wake-results .5s ease forwards
+
+  .wake-calc-options
+    position: absolute
+    top: 0
+    right: 50%
+    left: 0
+    bottom: 50%
+    // border: green thin solid
+    button
+      position: absolute
+      bottom: -25px
+      right: -25px
+      width: 50px
+      height: 50px
+      border-radius: 25px
+      background: white
+      border: none
+      font-family: "Permanent Marker", sans-serif
+      color: #434343
+      display: none
+      font-size: 20px
+      +applyShadow()
+    #at-sunrise
+      display: none
+      &.show
+        animation: at-sunrise-show .5s ease forwards
+      &.hide
+        animation: at-sunrise-hide .5s ease forwards
+
+    #minus-fifteen
+      &.show
+        animation: minus-fifteen-show .5s ease forwards
+      &.hide
+        animation: minus-fifteen-hide .5s ease forwards
+    #minus-thirty
+      &.show
+        animation: minus-thirty-show .5s ease forwards
+      &.hide
+        animation: minus-thirty-hide .5s ease forwards
+    #minus-fourtyfive
+      &.show
+        animation: minus-fourtyfive-show .5s ease forwards
+      &.hide
+        animation: minus-fourtyfive-hide .5s ease forwards
+
+    #plus-fifteen
+      &.show
+        animation: plus-fifteen-show .5s ease forwards
+      &.hide
+        animation: plus-fifteen-hide .5s ease forwards
+    #plus-thirty
+      &.show
+        animation: plus-thirty-show .5s ease forwards
+      &.hide
+        animation: plus-thirty-hide .5s ease forwards
+    #plus-fourtyfive
+      &.show
+        animation: plus-fourtyfive-show .5s ease forwards
+      &.hide
+        animation: plus-fourtyfive-hide .5s ease forwards
+
+// at sunrise
+@keyframes at-sunrise-show
+  from
+    opacity: 0
+    transform: translate(0px, 0px)
+  to
+    opacity: 1
+    transform: translate(0px, -120px)
+
+// at sunrise
+@keyframes at-sunrise-hide
+  from
+    opacity: 1
+    transform: translate(0px, -120px)
+  to
+    opacity: 0
+    transform: translate(0px, 0px)
+
+
+@keyframes minus-fifteen-show
+  from
+    opacity: 0
+    transform: translate(0px, 0px)
+  to
+    opacity: 1
+    transform: translate(-90px, -80px)
+
+@keyframes minus-fifteen-hide
+  from
+    opacity: 1
+    transform: translate(-90px, -80px)
+  to
+    opacity: 0
+    transform: translate(0px, 0px)
+
+
+@keyframes minus-thirty-show
+  from
+    opacity: 0
+    transform: translate(0px, 0px)
+  to
+    opacity: 1
+    transform: translate(-120px, 0px)
+
+@keyframes minus-thirty-hide
+  from
+    opacity: 1
+    transform: translate(-120px, 0px)
+  to
+    opacity: 0
+    transform: translate(0px, 0px)
+
+
+@keyframes minus-fourtyfive-show
+  from
+    opacity: 0
+    transform: translate(0px, 0px)
+  to
+    opacity: 1
+    transform: translate(-90px, +80px)
+
+@keyframes minus-fourtyfive-hide
+  from
+    opacity: 1
+    transform: translate(-90px, +80px)
+  to
+    opacity: 0
+    transform: translate(0px, 0px)
+
+
+@keyframes plus-fifteen-show
+  from
+    opacity: 0
+    transform: translate(0px, 0px)
+  to
+    opacity: 1
+    transform: translate(+90px, -80px)
+
+@keyframes plus-fifteen-hide
+  from
+    opacity: 1
+    transform: translate(+90px, -80px)
+  to
+    opacity: 0
+    transform: translate(0px, 0px)
+
+
+@keyframes plus-thirty-show
+  from
+    opacity: 0
+    transform: translate(0px, 0px)
+  to
+    opacity: 1
+    transform: translate(+120px, 0px)
+
+@keyframes plus-thirty-hide
+  from
+    opacity: 1
+    transform: translate(+120px, 0px)
+  to
+    opacity: 0
+    transform: translate(0px, 0px)
+
+
+@keyframes plus-fourtyfive-show
+  from
+    opacity: 0
+    transform: translate(0px, 0px)
+  to
+    opacity: 1
+    transform: translate(+90px, +80px)
+
+@keyframes plus-fourtyfive-hide
+  from
+    opacity: 1
+    transform: translate(+90px, +80px)
+  to
+    opacity: 0
+    transform: translate(0px, 0px)
+
+@keyframes show-wake-results
+  from
+    opacity: 0
+  to
+    opacity: 1

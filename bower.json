@@ -1,0 +1,23 @@
+{
+  "name": "riseandshine",
+  "description": "A web app that determines when you should fall asleep to wake up at sunrise.",
+  "main": "server.js",
+  "authors": [
+    "Charles Bido <charlesbido@me.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "riot": "^2.3.17",
+    "jquery": "^2.2.2",
+    "moment": "^2.12.0"
+  }
+}
