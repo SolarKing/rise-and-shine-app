@@ -2,6 +2,7 @@
   <button class="wake-calc-btn" onclick={getSunrise}>
     <i class="fa fa-sun-o"></i>
   </button>
+  <div class='uil-ripple-css' style='transform:scale(0.37);'><div></div><div></div></div>
   <div class="wake-calc-options">
     <button onclick={calcWake} value="0"   id="at-sunrise"       class="hide">0</button>
     <button onclick={calcWake} value="-15" id="minus-fifteen"    class="hide">-15</button>
@@ -23,25 +24,56 @@
 
 
   this.wakeTime = {
-    raw: Date.now(),
-    moment: "Sunrise"
+    raw: null,
+    moment: null,
   }
 
+  this.url = null;
+
+  var self = this;
+
+  this.on("mount", function() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        var url = "http://api.sunrise-sunset.org/json";
+        url += "?lat=" + pos.coords.latitude;
+        url += "&lng=" + pos.coords.longitude;
+        url += "&formatted=0";
+        self.url = url;
+        $(".wake-calc-btn", self.root)
+          .show()
+          .addClass("show");
+        $(".uil-ripple-css", self.root)
+          .hide();
+      });
+
+    } else {
+      alert("Geolocation not available :C");
+    }
+  });
+
   getSunrise(e) {
-    $(".wake-calc-btn", this.root).hide();
-    $(".wake-calc-options > button", this.root)
-      .show()
-      .toggleClass("show")
-      .toggleClass("hide");
-    $(".wake-calc-result")
-      .show()
-      .toggleClass("show");
+
+    $.get(self.url.toString(), function(data) {
+      self.wakeTime.raw = data.results.sunrise;
+      self.wakeTime.moment = moment(self.wakeTime.raw).format("hh:mm a");
+      self.update();
+      $(".wake-calc-btn", self.root).hide();
+      $(".wake-calc-options > button", self.root)
+        .show()
+        .toggleClass("show")
+        .toggleClass("hide");
+      $(".wake-calc-result")
+        .show()
+        .toggleClass("show");
+    });
+
   }
 
   calcWake(e) {
     var value = e.target.value;
     value = parseInt(value);
-    this.wakeTime.moment = moment(this.wakeTime.raw).add(value, "minutes").format("hh:mm a");
+    self.wakeTime.moment = moment(self.wakeTime.raw).add(value, "minutes").format("hh:mm a");
     this.update();
   }
 

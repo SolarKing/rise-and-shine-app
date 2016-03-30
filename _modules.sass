@@ -9,7 +9,7 @@ wake-calc
   .wake-calc-result
     position: absolute
     right: -100px
-    bottom: -30px
+    bottom: -20px
     width: 200px
     height: 60px
     text-align: center
@@ -21,7 +21,7 @@ wake-calc
     &.show
       animation: show-wake-results .5s ease forwards
     .wakeat
-      font-size: 14px
+      font-size: 16px
       letter-spacing: 2px
     .result
       font-size: 30px
@@ -38,7 +38,9 @@ wake-calc
     +applyShadow()
     position: relative
     z-index: 900
-    animation: show-wake-results .5s ease forwards
+    display: none
+    &.show
+      animation: show-wake-results .5s ease forwards
 
   .wake-calc-options
     position: absolute
@@ -225,3 +227,9 @@ wake-calc
     opacity: 0
   to
     opacity: 1
+
+@keyframes hide-wake-results
+  from
+    opacity: 1
+  to
+    opacity: 0
